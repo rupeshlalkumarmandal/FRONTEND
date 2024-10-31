@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note-Taking App</title>
+  <style>
+    /* Your CSS styling here */
+  </style>
+</head>
+<body>
+  <h1>Note-Taking App</h1>
+  
+  <form id="noteForm">
+    <input type="text" id="title" placeholder="Note Title" required />
+    <textarea id="content" placeholder="Note Content" required></textarea>
+    <button type="submit">Add Note</button>
+  </form>
+
+  <ul id="noteList"></ul>
+
+  <script>
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+    document.getElementById('noteForm').addEventListener('submit', addNote);
+
+    function addNote (e) {
+      e.preventDefault();
+      let title = document.getElementById('title').value;
+      let content = document.getElementById('content').value;
+
+      let note = {
+        id: Date.now(),
+        title,
+        content
+      };
+
+      notes.push(note);
+      localStorage.setItem('notes', JSON.stringify(notes));
+      displayNotes();
+      e.target.reset();
+    }
+
+    function displayNotes() {
+      const noteList = document.getElementById('noteList');
+      noteList.innerHTML = '';
+
+      notes.forEach(note => {
+        let li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${note.title}</strong>
+          <p>${note.content}</p>
+          <button onclick="editNote(${note.id})">Edit</button>
+          <button onclick="deleteNote(${note.id})">Delete</button>
+        `;
+        noteList.appendChild(li);
+      });
+    }
+
+    function editNote (id) {
+      let note = notes.find(note => note.id === id);
+      document.getElementById('title').value = note.title;
+      document.getElementById('content').value = note.content;
+
+      document.getElementById('noteForm').onsubmit = function(e) {
+        e.preventDefault();
+        note.title = document.getElementById('title').value;
+        note.content = document.getElementById('content').value;
+        
+        localStorage.setItem('notes', JSON.stringify(notes));
+        displayNotes();
+        e.target.reset();
+      };
+    }
+
+    function deleteNote (id) {
+      notes = notes.filter(note => note.id !== id);
+      localStorage.setItem('notes', JSON.stringify(notes));
+      displayNotes();
+    }
+
+    displayNotes();
+  </script>
+</body>
+</html>

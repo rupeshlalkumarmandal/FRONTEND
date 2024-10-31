@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Player {
+    constructor(name) {
+      this.name = name;
+      this.choice = null;
+    }
+  
+    makeChoice(choice) {
+      if (['rock', 'paper', 'scissors'].includes(choice)) {
+        this.choice = choice;
+      } else {
+        console.log("Invalid choice. Please choose rock, paper, or scissors.");
+      }
+    }
+  }
+
+  class Computer {
+    constructor() {
+      this.choice = null;
+    }
+  
+    makeChoice() {
+      const options = ['rock', 'paper', 'scissors'];
+      this.choice = options[Math.floor(Math.random() * options.length)];
+    }
+
+
+    class Game {
+        constructor(player, computer) {
+          this.player = player;
+          this.computer = computer;
+        }
+      
+        decideWinner() {
+          const { choice: playerChoice } = this.player;
+          const { choice: computerChoice } = this.computer;
+      
+          if (playerChoice === computerChoice) {
+            return "It's a draw!";
+          } 
+      
+          if (
+            (playerChoice === 'rock' && computerChoice === 'scissors') ||
+            (playerChoice === 'paper' && computerChoice === 'rock') ||
+            (playerChoice === 'scissors' && computerChoice === 'paper')
+          ) {
+            return `${this.player.name} wins!`;
+          } else {
+            return "Computer wins!";
+          }
+        }
+      
+        playRound(choice) {
+          this.player.makeChoice(choice);
+          this.computer.makeChoice();
+      
+          console.log(`Player choice: ${this.player.choice}`);
+          console.log(`Computer choice: ${this.computer.choice}`);
+      
+          const result = this.decideWinner();
+          console.log(result);
+        }
+      }
+
+
+      const player = new Player("Alice");
+const computer = new Computer();
+const game = new Game(player, computer);
+
+game.playRound('rock');   // Example round
+game.playRound('paper');
+
+
+
+    </script>
+</body>
+</html>
