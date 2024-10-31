@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grolocation Example</title>
+</head>
+<body>
+    <h1>Find My Location</h1>
+
+    <button onclick="getSelection()">Get Location</button>
+
+    <p id="loction">Location will apear here.</p>
+
+    <script>
+        function getLocation() {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition,showError);
+            } else{
+                document.getElementById('location').innerHTML = "Geolocation is not supported by this browser";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById('location').innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " +position.coords.longitude;
+        }
+
+        function showError (error) {
+            swith(error.code){
+                case error.PERMISSION_DENIED: alert("User denied the request for Geolocation.");
+                break;
+            }
+        }
+    </script>
+</body>
+</html>
