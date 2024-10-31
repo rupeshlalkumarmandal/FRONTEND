@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Layout with Grid and Flexbox</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: "header header", "nav main" "footer footer";
+            min-height: 100vh;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #4caf50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .nav {
+            grid-area: nav;
+            background-color: #e91e63;
+            padding: 20px;
+            color: white;
+        }
+
+        .main {
+            grid-area: main;
+            padding: 20px;
+        }
+
+        .sidebar {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: #2195f3;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #ddd;
+        }
+
+        .flex-item {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "nav"
+                    "main"
+                    "footer";
+            }
+
+            .flex-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">Header</header>
+    <nav class="nav">Navigation Bar</nav>
+    <main class="main">
+        <section class="content">
+            <div class="flex-container">
+                <div class="flex-item">Item1</div>
+                <div class="flex-item">Item2</div>
+                <div class="flex-item">Item3</div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            Sidebar
+        </aside>
+    </main>
+    <footer class="footer">Footer</footer>
+</body>
+
+</html>

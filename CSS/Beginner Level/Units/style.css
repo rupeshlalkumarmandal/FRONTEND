@@ -1,0 +1,32 @@
+.pixels{
+    font-size: 16px;
+    color: blue;
+}
+
+.box{
+    width: 5cm;
+    height: 5cm;
+    background-color: lightcoral;
+    margin-top: 20px;
+}
+
+.em{
+    font-size: 1.5em;
+    color: green;
+}
+
+.h1{
+    font-size: 2rem;
+}
+
+.percent{
+    width: 50%;
+    background-color: lightblue;
+    padding: 10px;
+}
+
+.box{
+    width: 50vw;
+    height: 30vh;
+    background-color: lightgreen;
+}

@@ -1,0 +1,14 @@
+###  **Intermediate Level**
+   - **Flexbox**:
+     - Create layouts using Flexbox. Learn about `justify-content`, `align-items`, `flex-direction`, and `flex-wrap`.
+     - Create horizontal and vertical navigation bars using Flexbox.
+   - **CSS Grid**:
+     - Create grid layouts. Practice grid tracks, grid areas, and implicit vs explicit grids.
+   - **Media Queries**:
+     - Practice making your website responsive using `@media` for different screen sizes.
+     - Work on breakpoints for small, medium, and large screens.
+   - **CSS Animations**:
+     - Learn basic keyframes with `@keyframes` and apply animations.
+     - Experiment with transitions and transformations like `rotate`, `scale`, `translate`, and `skew`.
+   - **Pseudo-classes and Pseudo-elements**:
+     - Practice using `:hover`, `:focus`, `::before`, `::after` for dynamic and decorative elements.
