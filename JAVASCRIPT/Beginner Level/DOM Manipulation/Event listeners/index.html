@@ -1,0 +1,19 @@
+<body>
+    
+    <form id="myForm">
+        <input type="text" placeholder="Your Name">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+
+            alert('Form Submitted!');
+        })
+    </script>
+</body>

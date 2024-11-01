@@ -1,0 +1,9 @@
+<div id="myDiv">This is a <b>bold</b> text.</div>
+<button onclick="changeHTML()">Change HTML</button>
+
+<script>
+  function changeHTML() {
+    const div = document.getElementById('myDiv');
+    div.innerHTML = "<p>New paragraph with <i>italic</i> text.</p>";
+  }
+</script>
